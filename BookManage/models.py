@@ -12,8 +12,8 @@ class book(models.Model):
 	Price = models.FloatField()
 
 class author(models.Model):
-	AuthorID = models.IntegerField(blank=True,null=True)
-	Name = models.CharField(max_length=20,blank=True)
+	AuthorID = models.IntegerField(blank=True,null=True)    #可为空
+	Name = models.CharField(max_length=20,blank=True)      #可为空
 	Age = models.IntegerField(blank=True,null=True)
 	Country = models.CharField(max_length=30,blank=True)
 

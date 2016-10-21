@@ -5,16 +5,16 @@ from BookManage.models import *
 
 
 # Create your views here.
-def show(request):
+def show(request):      #展示图书
 	book_posts = book.objects.all()
 	author_posts = author.objects.all()
 	dic={'book_posts':book_posts,'author_posts':author_posts}
 	return render(request, 'show.html',dic)
 
 
-def newBook(request):
+def newBook(request):        #添加新图书
 	flag=False
-	if request.method == 'POST':
+	if request.method == 'POST':     #判断http请求的方法
 		authors = author.objects.all()
 		for a in authors:
 			if(a.Name == request.POST.get('Name')):
