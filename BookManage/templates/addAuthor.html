@@ -1,0 +1,14 @@
+<!--addAuthor.html-->
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+检验到为新作者，请完善作者信息:
+<form action="/newAuthor/" method="POST">
+	{% csrf_token %}
+	<caption>添加作者</caption><br>
+	姓名:<input type="text" name="Name"><br>
+	年龄:<input type="text" name="Age"><br>
+	国籍:<input type="text" name="Country"><br>
+	<input type="submit" value="提交">
+
+</form>

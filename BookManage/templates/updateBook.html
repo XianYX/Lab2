@@ -1,0 +1,33 @@
+<!--updateBook.html-->
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<table border=1 class="book" id="alternatecolor">
+<form action="/updateAll/" method="POST">
+	{% csrf_token %}
+	<caption>更新信息</caption><br>
+	<tr>
+			
+			<th>作者</th>
+			<th>出版社</th>
+			<th>出版时间</th>
+			<th>价钱</th>
+			
+	</tr>
+	<br>
+	<tr>
+		
+			<td><input type="text" name="Name" value="{{update_author.Name}}"/></td>
+			<td><input type="text" name="Publisher" value="{{update_book.Publisher}}"/></td>
+			<td><input type="date" name="PublishDate" value="{{update_book.PublishDate}}"/></td>
+			<td><input type="number" name="Price" value="{{update_book.Price}}" min=0 step="0.01"/></td>
+			
+	</tr>
+		
+	<input type="submit" value="提交">
+</form>
+
+</table>
+
+<button onclick="location.href='/show/'"  class="btn">返回</button>

@@ -1,0 +1,104 @@
+<!--show.html-->
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<table border=1 class="book" id="alternatecolor">
+	<caption>图书</caption>
+	<tr>
+			<th>ISBN</th>
+			<th>书名</th>
+			<th>作者</th>
+			<th>出版社</th>
+			<th>出版时间</th>
+			<th>价钱</th>
+			<th>操作</th>
+	</tr>
+	{% for book_p in book_posts %}
+	<tr>
+			
+			<td>{{book_p.ISBN}}</td>
+			<td><a href="{% url 'details' book_p.ISBN %}">{{book_p.Title}}</a></td>
+			{% for author_p in author_posts %}
+			{% if author_p.AuthorID == book_p.AuthorID %}
+				<td>{{author_p.Name}}</td>
+			{% endif %}
+			{% endfor %}
+			<td>{{book_p.Publisher}}</td>
+			<td>{{book_p.PublishDate}}</td>
+			<td>{{book_p.Price}}</td>
+			<td><a href="{% url 'updateBook' book_p.ISBN %}" >修改</a></td>
+			<td><a href="{% url 'delete' book_p.ISBN %}" onclick="return confirm('确定删除？')">删除</a></td>
+
+	</tr>
+	{% endfor %}
+</table>
+
+<button onclick="location.href='../addBook/'"  class="btn">添加图书</button><br>
+
+<form action="/searchAuthor/" method="POST">
+	{% csrf_token %}
+	输入作者姓名查询:<input type="text" name="search_name">
+	<input type="submit" value="查询">
+</form>
+
+
+
+
+			
+<!-- Javascript goes in the document HEAD -->
+<script type="text/javascript">
+function altRows(id){
+    if(document.getElementsByTagName){  
+        
+        var table = document.getElementById(id);  
+        var rows = table.getElementsByTagName("tr"); 
+         
+        for(i = 0; i < rows.length; i++){          
+            if(i % 2 == 0){
+                rows[i].className = "evenrowcolor";
+            }else{
+                rows[i].className = "oddrowcolor";
+            }      
+        }
+    }
+}
+
+window.onload=function(){
+    altRows('alternatecolor');
+}
+</script>
+
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table.book{
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #a9c6c9;
+    border-collapse: collapse;
+}
+table.book th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+table.book td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+.oddrowcolor{
+    background-color:#d4e3e5;
+}
+.evenrowcolor{
+    background-color:#c3dde0;
+}
+</style>
+
+
+
+

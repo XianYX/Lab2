@@ -1,0 +1,108 @@
+<!--details.html-->
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<table border=1 class="book" id="alternatecolor">
+	<caption>图书详细信息</caption>
+	<tr>
+			<th>ISBN</th>
+			<th>书名</th>
+			<th>作者</th>
+			<th>出版社</th>
+			<th>出版时间</th>
+			<th>价钱</th>
+	</tr>
+	
+	<tr>
+			
+			<td>{{showbook.ISBN}}</td>
+			<td>{{showbook.Title}}</td>
+			<td>{{showauthor.Name}}</td>
+			<td>{{showbook.Publisher}}</td>
+			<td>{{showbook.PublishDate}}</td>
+			<td>{{showbook.Price}}</td>
+
+	</tr>
+	
+</table>
+
+<table border=1 class="author" id="alternatecolor">
+	<caption>作者详细信息</caption>
+	<tr>
+			<th>作者ID</th>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>国籍</th>
+	</tr>
+	
+	<tr>
+			
+			<td>{{showauthor.AuthorID}}</td>
+			<td>{{showauthor.Name}}</td>
+			<td>{{showauthor.Age}}</td>	
+			<td>{{showauthor.Country}}</td>
+
+	</tr>
+	
+</table>
+
+<button onclick="location.href='/show/'"  class="btn">返回</button>
+
+
+<!-- Javascript goes in the document HEAD -->
+<script type="text/javascript">
+function altRows(id){
+    if(document.getElementsByTagName){  
+        
+        var table = document.getElementById(id);  
+        var rows = table.getElementsByTagName("tr"); 
+         
+        for(i = 0; i < rows.length; i++){          
+            if(i % 2 == 0){
+                rows[i].className = "evenrowcolor";
+            }else{
+                rows[i].className = "oddrowcolor";
+            }      
+        }
+    }
+}
+
+window.onload=function(){
+    altRows('alternatecolor');
+}
+</script>
+
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table.book{
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #a9c6c9;
+    border-collapse: collapse;
+}
+table.book th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+table.book td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+.oddrowcolor{
+    background-color:#d4e3e5;
+}
+.evenrowcolor{
+    background-color:#c3dde0;
+}
+</style>
+
+
+
+
